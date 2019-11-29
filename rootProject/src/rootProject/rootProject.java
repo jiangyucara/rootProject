@@ -19,8 +19,8 @@ public class rootProject {
 
 	}
 	
-	public void infoDictionary(String[] details, List<Driver> driverList) {				
-		if(details.length <= 1) {
+	public void infoDictionary(String[] details, List<Driver> driverList) {
+		if(details.length != 2 && details.length != 5) {
 			System.out.println("Invalid input");
 			return;
 		}
@@ -28,11 +28,11 @@ public class rootProject {
 		// Driver: details[0]: "Driver", details[1]: name
 		if(details[0].equals("Driver") && !driverList.contains(driver)) {
 			driverList.add(driver);
-		}else if(details[0].equals("Trip")) {
-			// Trip: details[0]: "Trip", details[1]: name, details[2]: start time, details[3]: end time, details[4]: miles
-			double hrs = calculateHrs(details[2], details[3]);
-			double miles = Double.parseDouble(details[4]);		
+		}else if(details[0].equals("Trip")) {	
 			if(driverList.contains(driver)) {
+				// Trip: details[0]: "Trip", details[1]: name, details[2]: start time, details[3]: end time, details[4]: miles
+				double hrs = calculateHrs(details[2], details[3]);
+				double miles = Double.parseDouble(details[4]);	
 				int index = driverList.indexOf(driver);
 				double mph = miles / hrs;
 				if(mph <= 100 && mph >= 5) {
